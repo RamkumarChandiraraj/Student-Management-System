@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sms.dao.AdminDao;
 import com.sms.dto.Admin;
 
-//@WebServlet("/signUp")
+@WebServlet("/signUp")
 public class AdminSignUp extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,7 +26,7 @@ public class AdminSignUp extends HttpServlet{
 		admin.setAdminPassword(password);
 
 		new AdminDao().adminSignUp(admin);
-		
+
 		req.getRequestDispatcher("AdminLogin.jsp").forward(req, resp);
 	}
 }
