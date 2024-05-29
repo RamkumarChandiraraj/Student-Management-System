@@ -15,6 +15,6 @@
 			response.sendRedirect("AdminLogin.jsp");
 		}%>
 		
-	<div class="logout"><a href="logout">Logout</a></div>
+	<div class="logout"><a href="adminLogout">Logout</a></div>
 </body>
 </html>

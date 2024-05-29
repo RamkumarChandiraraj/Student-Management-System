@@ -8,12 +8,16 @@ import org.hibernate.cfg.Configuration;
 import javax.persistence.Query;
 
 import com.sms.dto.Admin;
+import com.sms.dto.Student;
 
 public class AdminDao {
 
 	public static Session getSession()
 	{
-		SessionFactory sessionFactory=new Configuration().configure().addAnnotatedClass(Admin.class).buildSessionFactory();
+		SessionFactory sessionFactory=new Configuration().configure()
+				.addAnnotatedClass(Admin.class)
+				.addAnnotatedClass(Student.class)
+				.buildSessionFactory();
 		Session session=sessionFactory.openSession();
 		return session;
 	}
@@ -39,5 +43,14 @@ public class AdminDao {
 		{
 			return null;
 		}
+	}
+
+	public void updateAdmin(Admin admin)
+	{
+		Session session=AdminDao.getSession();
+		Transaction trans=session.beginTransaction();
+		session.merge(admin);
+		trans.commit();
+		session.close();
 	}
 }

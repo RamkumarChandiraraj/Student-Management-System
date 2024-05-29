@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,8 +20,8 @@ public class Admin {
 	private String adminEmail;
 	private String adminPassword;
 
-//	@OneToMany(mappedBy = "admin")
-//	private List<Student> students;
+	@OneToMany(mappedBy = "admin",fetch = FetchType.LAZY)
+	private List<Student> students;
 
 	public int getAdminId() {
 		return adminId;
@@ -54,12 +55,12 @@ public class Admin {
 		this.adminPassword = adminPassword;
 	}
 
-//	public List<Student> getStudents() {
-//		return students;
-//	}
-//
-//	public void setStudents(List<Student> students) {
-//		this.students = students;
-//	}
+	public List<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 
 }
