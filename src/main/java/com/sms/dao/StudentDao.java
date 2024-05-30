@@ -2,6 +2,10 @@ package com.sms.dao;
 
 
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -20,7 +24,7 @@ public class StudentDao {
 		Session session=sessionFactory.openSession();
 		return session;
 	}
-	
+
 	public void saveStudent(Student student)
 	{
 		Session session=StudentDao.getsession();
@@ -28,5 +32,15 @@ public class StudentDao {
 		session.save(student);
 		trans.commit();
 		session.close();
+	}
+
+	public List<Student> getAllStudents(Admin admin)
+	{
+		Session session=StudentDao.getsession();
+		Transaction trans=session.beginTransaction();
+		Query query=session.createQuery("select s from Student s where s.admin=?1");
+		query.setParameter(1, admin);
+		List students=query.getResultList();
+		return students;
 	}
 }

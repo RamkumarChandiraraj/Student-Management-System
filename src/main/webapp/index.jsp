@@ -8,7 +8,7 @@
 	<h3>You can able to manage Student Data here....!!</h3>
 	<div class="a">
 		<a href="SaveStudent.jsp">Save_Student</a>
-		<a href="ViewStudent.jsp">View_Student</a>
+		<a href="viewStudents">View_Student</a>
 	</div>
 	<%}
 		else{
